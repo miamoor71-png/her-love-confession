@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#170d17">
+  <title>A Special Message for HER ♡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <!-- PAGE 1: Sunset introduction -->
+    <section class="page hero-page active" id="page1" aria-label="Welcome">
+      <div class="tiny-note">Not just a crush...<br>It's you. <span>♡</span></div>
+      <div class="floating-hearts" aria-hidden="true">
+        <i>♥</i><i>♥</i><i>♥</i><i>♥</i><i>♥</i>
+      </div>
+      <div class="hero-copy">
+        <h1>From Jay <span>♡</span></h1>
+        <p>A special message for someone very special...</p>
+        <div class="little-heart">♥</div>
+        <button class="primary-btn" id="openQuestion">Are you HER? <span>→</span></button>
+      </div>
+      <div class="polaroid top-polaroid">
+        <div class="polaroid-photo"></div>
+        <div class="polaroid-caption">You... ♡</div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: Confirmation -->
+    <section class="page question-page" id="page2" aria-label="Confirmation">
+      <button class="back-btn" id="backToPage1">← Back</button>
+      <div class="question-content">
+        <h2>Are you sure you're<br><em>HER?</em></h2>
+        <div class="outline-heart">♡</div>
+        <div class="button-row">
+          <button class="primary-btn answer-btn" id="yesBtn">♥ &nbsp; Yes</button>
+          <button class="secondary-btn answer-btn" id="noBtn">× &nbsp; No</button>
+        </div>
+      </div>
+      <p class="end-message" id="endMessage" hidden>This message isn't for you. Take care. ♡</p>
+    </section>
+
+    <!-- PAGE 3: Love letter -->
+    <section class="page letter-page" id="page3" aria-label="Love letter">
+      <button class="back-btn" id="backToPage2">← Back</button>
+      <div class="letter-layout">
+        <article class="letter-copy">
+          <h2>To my <span>HER,</span></h2>
+          <div class="outline-heart">♡</div>
+          <p>I don't even know how to put everything I feel into words,<br>but I'll try...</p>
+          <p>You're not just someone I like, you're someone I truly care about.<br>
+          You make my days brighter, my thoughts lighter,<br>
+          and my heart feel at peace. I love your smile, your kindness,<br>
+          the way you laugh, and even the little things about you.</p>
+          <p>I'm so grateful to have you in my life,<br>
+          and I really hope you feel the same way about me.</p>
+          <p class="love-line">I love you, HER... always. ♡</p>
+          <p class="signature">- Jay</p>
+          <div class="audio-player">
+            <button id="playBtn" class="play-btn" aria-label="Play music">▶</button>
+            <div class="audio-info">
+              <div class="audio-title">Love Song</div>
+              <div class="audio-track"><span id="progress"></span></div>
+            </div>
+            <span class="audio-time" id="audioTime">0:00</span>
+            <span class="volume-icon">◖))</span>
+            <audio id="loveAudio" src="music.mp3" preload="metadata"></audio>
+          </div>
+          <p class="footer-note">Some people just make life better...<br>You're one of them. <span>♡</span></p>
+        </article>
+        <div class="love-photo-wrap">
+          <div class="love-photo">
+            <img src="roses.svg" alt="Roses and a handwritten love note">
+          </div>
+          <span class="doodle-heart heart-one">♡</span>
+          <span class="doodle-heart heart-two">♡</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
+  
