@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --pink: #f56b9c;
+  --light-pink: #ff8eb5;
+  --dark: #100b12;
+  --white: #f8edf3;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #100b12; color: var(--white); }
+body { font-family: 'Nunito', Arial, sans-serif; }
+main { width: 100%; overflow: hidden; }
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+.page.active { display: flex; }
+.page::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background-size: cover; background-position: center;
+}
+.page::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  pointer-events: none;
+}
+.hero-page { align-items: center; justify-content: center; min-height: 100vh; }
+.hero-page::before { background-image: url("sunset.svg"); }
+.hero-page::after { background: linear-gradient(90deg, rgba(10,4,12,.15), rgba(14,5,15,.05) 50%, rgba(9,4,12,.18)); }
+.tiny-note { position: absolute; top: 7%; left: 4.5%; font: 600 19px/1.3 'Caveat', cursive; color: #f9dce7; transform: rotate(-4deg); text-shadow: 0 2px 8px #000; }
+.tiny-note span { color: var(--pink); }
+.hero-copy { text-align: center; margin-top: -2vh; padding: 20px; }
+.hero-copy h1 { font: 600 clamp(48px, 7vw, 78px)/1 'Caveat', cursive; margin: 0 0 12px; letter-spacing: 1px; text-shadow: 0 3px 16px #32152a; }
+.hero-copy h1 span { color: var(--pink); font-size: 1.1em; }
+.hero-copy p { font: italic 600 clamp(13px, 1.4vw, 18px) 'Caveat', cursive; margin: 0 0 20px; color: #f8e4eb; }
+.little-heart { color: #ffb1ca; font-size: 21px; margin: 6px 0 16px; text-shadow: 0 0 14px #ff4d91; }
+.primary-btn, .secondary-btn {
+  border: 0; border-radius: 999px; min-width: 170px; padding: 13px 25px;
+  font: 800 14px 'Nunito', sans-serif; cursor: pointer; transition: transform .18s, filter .18s, background .18s;
+}
+.primary-btn { background: linear-gradient(110deg, #fa70a0, #f45e91); color: #32101e; box-shadow: 0 5px 18px rgba(255,70,139,.2); }
+.primary-btn:hover, .secondary-btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.hero-copy .primary-btn span { margin-left: 15px; font-size: 18px; }
+.polaroid { background: #f2e5df; padding: 10px 10px 9px; box-shadow: 0 10px 28px #080308a8; color: #2c1720; }
+.top-polaroid { position: absolute; width: clamp(135px, 16vw, 195px); right: 6%; top: 18%; transform: rotate(7deg); }
+.polaroid-photo { height: clamp(125px, 15vw, 175px); background: url("polaroid.svg") center/cover; }
+.polaroid-caption { text-align: center; padding-top: 7px; font: 600 20px 'Caveat', cursive; }
+.floating-hearts i { position: absolute; font-style: normal; color: #ff5b9a; text-shadow: 0 0 14px #ff2b83; animation: float 5s ease-in-out infinite; }
+.floating-hearts i:nth-child(1) { top: 32%; left: 24%; font-size: 18px; }
+.floating-hearts i:nth-child(2) { top: 36%; left: 49%; color: #ffc0d6; }
+.floating-hearts i:nth-child(3) { top: 61%; right: 29%; font-size: 24px; animation-delay: -1s; }
+.floating-hearts i:nth-child(4) { top: 55%; left: 70%; font-size: 13px; animation-delay: -2s; }
+.floating-hearts i:nth-child(5) { top: 25%; left: 28%; font-size: 22px; animation-delay: -3s; }
+@keyframes float { 0%,100% { transform: translateY(0); opacity: .65; } 50% { transform: translateY(-15px); opacity: 1; } }
+
+.question-page, .letter-page { background: #100b12; }
+.question-page::before, .letter-page::before { background-image: url("flowers.svg"); filter: brightness(.78); }
+.question-page::after { background: rgba(10, 7, 12, .42); }
+.question-page { align-items: center; justify-content: center; }
+.back-btn { position: absolute; top: 20px; left: 27px; z-index: 3; border: 0; background: transparent; color: #f5eaf0; font: 700 13px 'Nunito', sans-serif; cursor: pointer; padding: 8px 4px; }
+.question-content { text-align: center; margin-top: -8px; }
+.question-content h2 { font-size: clamp(22px, 2.3vw, 30px); line-height: 1.35; margin: 0; font-weight: 800; }
+.question-content h2 em { display: inline-block; font: 600 clamp(34px, 4vw, 43px) 'Caveat', cursive; color: var(--pink); margin-top: 1px; }
+.outline-heart { color: var(--pink); font: 600 27px 'Caveat', cursive; margin: 5px 0 17px; }
+.button-row { display: flex; gap: 16px; justify-content: center; }
+.answer-btn { min-width: 136px; padding: 12px 23px; }
+.secondary-btn { border: 1px solid #e8dfe7; color: #fff; background: rgba(10,8,13,.65); }
+.end-message { position: absolute; top: 70%; text-align: center; width: 100%; color: #f8b4ce; font: 600 22px 'Caveat', cursive; padding: 0 20px; }
+.question-page.ended .question-content { animation: fadeAway .45s forwards; }
+.question-page.ended .end-message { display: block; }
+@keyframes fadeAway { to { opacity: 0; transform: scale(.94); } }
+
+.letter-page { align-items: center; justify-content: center; }
+.letter-page::before { filter: brightness(.66) blur(.2px); }
+.letter-page::after { background: rgba(12, 6, 13, .3); }
+.letter-layout { width: min(1080px, 92vw); display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 5vw; padding: 65px 0 28px; }
+.letter-copy { text-align: center; }
+.letter-copy h2 { font: 600 clamp(32px, 4vw, 42px) 'Caveat', cursive; color: var(--pink); margin: 0; }
+.letter-copy h2 span { white-space: nowrap; }
+.letter-copy .outline-heart { margin: 0 0 9px; }
+.letter-copy p { font-size: clamp(12px, 1.15vw, 15px); line-height: 1.6; margin: 12px 0; color: #f6e6ed; }
+.letter-copy .love-line { font: 600 clamp(21px, 2.3vw, 27px) 'Caveat', cursive; color: var(--pink); margin: 13px 0 0; }
+.letter-copy .signature { font: 600 23px 'Caveat', cursive; margin: 0 0 20px; }
+.love-photo-wrap { position: relative; width: min(300px, 100%); justify-self: center; transform: rotate(4deg); }
+.love-photo { background: #f1e5dd; padding: 8px 8px 10px; box-shadow: 0 12px 28px #050307a8; }
+.love-photo img { display: block; width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+.doodle-heart { position: absolute; right: -37px; color: var(--pink); font: 600 37px 'Caveat', cursive; transform: rotate(15deg); }
+.heart-one { top: 20%; }
+.heart-two { top: 32%; right: -45px; font-size: 45px; }
+.audio-player { display: flex; align-items: center; gap: 11px; width: min(450px, 100%); margin: 22px auto 0; border: 1px solid #ffffff30; border-radius: 40px; background: rgba(27,24,31,.82); padding: 7px 13px 7px 8px; box-shadow: 0 5px 20px #0004; }
+.play-btn { flex: 0 0 41px; width: 41px; height: 41px; border: 0; border-radius: 50%; background: var(--pink); color: #35101f; cursor: pointer; font-size: 16px; }
+.audio-info { flex: 1; min-width: 0; text-align: left; }
+.audio-title { font-size: 11px; font-weight: 800; margin-bottom: 7px; }
+.audio-track { height: 3px; background: #77717b; border-radius: 10px; overflow: hidden; }
+.audio-track span { display: block; height: 100%; width: 0; background: var(--pink); }
+.audio-time, .volume-icon { font-size: 10px; white-space: nowrap; color: #eee1e9; }
+.footer-note { margin-top: 27px !important; font-size: 12px !important; }
+.footer-note span { color: var(--pink); font-size: 20px; }
+@media (max-width: 700px) {
+  .hero-page { min-height: 100svh; }
+  .hero-copy { margin-top: 0; padding-top: 50px; }
+  .top-polaroid { top: auto; bottom: 6%; right: 6%; width: 112px; padding: 6px 6px 5px; }
+  .polaroid-photo { height: 100px; }
+  .polaroid-caption { font-size: 16px; padding-top: 4px; }
+  .tiny-note { top: 5%; left: 5%; font-size: 16px; }
+  .hero-copy h1 { font-size: 52px; }
+  .hero-copy p { max-width: 280px; margin-left: auto; margin-right: auto; }
+  .question-page { min-height: 100svh; }
+  .letter-page { min-height: 100svh; overflow-y: auto; }
+  .letter-layout { grid-template-columns: 1fr; gap: 26px; padding: 65px 0 30px; }
+  .letter-copy { order: 1; }
+  .love-photo-wrap { order: 0; width: 140px; margin-top: 4px; }
+  .doodle-heart { right: -24px; font-size: 28px; }
+  .heart-two { right: -29px; font-size: 34px; }
+  .letter-copy p { font-size: 12px; }
+  .letter-copy p br { display: none; }
+  .audio-player { margin-top: 18px; gap: 8px; }
+  .audio-time { font-size: 9px; }
+  .volume-icon { display: none; }
+  .back-btn { top: 13px; left: 16px; }
+}
